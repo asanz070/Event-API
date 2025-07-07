@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+
 const { createUser, getUsers, getUserById } = require('./userController');
 
 router.get('/', async (request, response) => {
