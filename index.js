@@ -17,6 +17,9 @@ app.use('/api/users', userRouter)
 const eventRouter = require('./routes/events/eventRouter');
 app.use('/api/events', eventRouter)
 
+const bookingRouter = require('./routes/bookings/bookingRouter');
+app.use('/api/bookings', bookingRouter);
+
 app.listen(PORT, () => {
     console.log(`Server is listening on PORT: ${PORT}`);
     connectToMongoDB();
