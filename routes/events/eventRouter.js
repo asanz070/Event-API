@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { createEvent, getEvent, getEventById } = require('./eventController');
+const { createEvent, getEvent, getEventById, updateEventById, } = require('./eventController');
 
 router.get('/', async (request, response) => {
     try {
@@ -33,5 +33,14 @@ router.post('/', async (request, response) => {
         response.json({ message: "failure", payload: error.message });
     }
 });
+
+router.put('/:eventId', async (request, response) => {
+    try {
+        const updatedEvent = await updateEventById(request.params.eventId, request.body);
+        response.json({ message: 'success', payload: updatedEvent })
+    } catch (error) {
+        response.json({ message: "failure", payload: error.message });
+    }
+})
 
 module.exports = router;
